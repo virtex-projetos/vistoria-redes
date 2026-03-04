@@ -1,28 +1,24 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Projetos - Redes e Eventos</title>
+    <title>Calculadora de Redes - Vistoria</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; padding: 20px; color: #333; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f4f8; padding: 20px; color: #333; }
         .container { max-width: 650px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: auto; }
-        h1 { color: #1a365d; text-align: center; font-size: 24px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
+        h1 { color: #1a365d; text-align: center; font-size: 22px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
         h3 { color: #2b6cb0; margin-top: 20px; border-left: 4px solid #3182ce; padding-left: 10px; }
-        .form-group { margin-bottom: 15px; }
+        .form-group { margin-bottom: 12px; }
         label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; }
-        input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; box-sizing: border-box; font-size: 14px; }
-        .checkbox-group { display: flex; align-items: center; margin-bottom: 12px; background: #f7fafc; padding: 10px; border-radius: 5px; border: 1px solid #edf2f7; }
-        .checkbox-group input { margin-right: 10px; transform: scale(1.2); cursor: pointer; }
-        .checkbox-group label { margin-bottom: 0; cursor: pointer; font-weight: normal; }
-        button { width: 100%; padding: 15px; background-color: #3182ce; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: background 0.3s; }
-        button:hover { background-color: #2b6cb0; }
-        #resultado { margin-top: 25px; padding: 20px; background-color: #ebf8ff; border-radius: 8px; border: 1px solid #bee3f8; display: none; }
-        .alerta { color: #c53030; font-weight: bold; margin-bottom: 8px; list-style-type: '⚠️ '; }
-        .dica { color: #276749; font-weight: bold; margin-bottom: 8px; list-style-type: '💡 '; }
-        .critico { color: #fff; background-color: #e53e3e; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-weight: bold; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; line-height: 1.5; }
+        input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; box-sizing: border-box; }
+        .checkbox-group { display: flex; align-items: center; margin-bottom: 10px; background: #f7fafc; padding: 8px; border-radius: 5px; border: 1px solid #edf2f7; }
+        .checkbox-group input { margin-right: 10px; transform: scale(1.2); }
+        button { width: 100%; padding: 15px; background-color: #3182ce; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        #resultado { margin-top: 25px; padding: 20px; background-color: #ebf8ff; border-radius: 8px; display: none; }
+        .alerta { color: #c53030; font-weight: bold; margin-bottom: 8px; list-style: none; }
+        .dica { color: #276749; font-weight: bold; margin-bottom: 8px; list-style: none; }
+        .critico { color: #fff; background-color: #e53e3e; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -30,201 +26,106 @@
 <div class="container">
     <h1>📋 Vistoria Técnica e Dimensionamento</h1>
     
-    <h3>1. Expectativa de Conexões</h3>
     <div class="form-group">
-        <label>Público Geral (Qtd de Celulares):</label>
-        <input type="number" id="publico" value="0" min="0">
+        <label>Público Geral (Conexões):</label>
+        <input type="number" id="publico" value="0">
     </div>
     <div class="form-group">
         <label>Staff / Administrativo:</label>
-        <input type="number" id="staff" value="0" min="0">
+        <input type="number" id="staff" value="0">
     </div>
     <div class="form-group">
         <label>Maquininhas de Cartão:</label>
-        <input type="number" id="maquininhas" value="0" min="0">
+        <input type="number" id="maquininhas" value="0">
     </div>
 
-    <h3>2. Espaço e Barreiras</h3>
     <div class="form-group">
-        <label>Tamanho do Local:</label>
+        <label>Tamanho do Local / Divisórias:</label>
         <select id="tamanho_local">
-            <option value="pequeno">Pequeno (Sala, Centro de Treinamento)</option>
-            <option value="medio">Médio (Quadra, Corredor de barracas)</option>
-            <option value="grande">Grande Porte (Estádio, Praça, Galpão de Eventos)</option>
-            <option value="salas_isoladas">Múltiplas Salas Separadas (Alta barreira)</option>
+            <option value="pequeno">Pequeno (Sala única, Academia compacta)</option>
+            <option value="medio">Médio ou Bem Reparticionado (Várias salas/paredes)</option>
+            <option value="grande">Grande Porte (Estádio, Praça, Show)</option>
         </select>
     </div>
-    <div class="checkbox-group">
-        <input type="checkbox" id="area_aberta">
-        <label for="area_aberta">Local em ÁREA ABERTA (Equipamentos expostos ao tempo)?</label>
-    </div>
-    <div class="checkbox-group">
-        <input type="checkbox" id="barracas_metal">
-        <label for="barracas_metal">Existem Food Trucks/Trailers de metal ou paredes grossas?</label>
-    </div>
-    <div class="checkbox-group">
-        <input type="checkbox" id="risco_layout">
-        <label for="risco_layout">Risco de mudança no layout (barracas/portaria) de última hora?</label>
-    </div>
 
-    <h3>3. Dinâmica da Rede</h3>
-    <div class="checkbox-group">
-        <input type="checkbox" id="sinal_ruim_4g">
-        <label for="sinal_ruim_4g">Local com cobertura de dados móveis (4G/5G) RUIM?</label>
-    </div>
-    <div class="checkbox-group">
-        <input type="checkbox" id="tem_live">
-        <label for="tem_live">Haverá transmissão ao vivo (Live/Podcast)?</label>
-    </div>
-    <div class="checkbox-group">
-        <input type="checkbox" id="tem_hotspot">
-        <label for="tem_hotspot">O cliente quer Hotspot (Portal Cautivo/Coleta de Leads)?</label>
-    </div>
-    <div class="checkbox-group">
-        <input type="checkbox" id="energia_oscila">
-        <label for="energia_oscila">Histórico de energia oscilante no local?</label>
-    </div>
+    <div class="checkbox-group"><input type="checkbox" id="area_aberta"><label>Área Aberta (Exposto ao tempo)?</label></div>
+    <div class="checkbox-group"><input type="checkbox" id="sinal_ruim_4g"><label>Sinal 4G/5G Ruim no local?</label></div>
+    <div class="checkbox-group"><input type="checkbox" id="tem_live"><label>Haverá Live / Transmissão?</label></div>
+    <div class="checkbox-group"><input type="checkbox" id="energia_oscila"><label>Energia instável no local?</label></div>
 
-    <button onclick="gerarProjeto()">Gerar Projeto de Hardware</button>
+    <button onclick="gerarProjeto()">Calcular Projeto</button>
 
     <div id="resultado"></div>
 </div>
 
 <script>
     function gerarProjeto() {
-        let publico = parseInt(document.getElementById('publico').value) || 0;
-        let staff = parseInt(document.getElementById('staff').value) || 0;
-        let maquininhas = parseInt(document.getElementById('maquininhas').value) || 0;
-        let total = publico + staff + maquininhas;
-
-        let tamanho = document.getElementById('tamanho_local').value;
+        let pub = parseInt(document.getElementById('publico').value) || 0;
+        let stf = parseInt(document.getElementById('staff').value) || 0;
+        let maq = parseInt(document.getElementById('maquininhas').value) || 0;
+        let total = pub + stf + maq;
+        
         let area_aberta = document.getElementById('area_aberta').checked;
-        let barracas_metal = document.getElementById('barracas_metal').checked;
-        let risco_layout = document.getElementById('risco_layout').checked;
-        let sinal_ruim_4g = document.getElementById('sinal_ruim_4g').checked;
-        let tem_live = document.getElementById('tem_live').checked;
-        let tem_hotspot = document.getElementById('tem_hotspot').checked;
-        let energia_oscila = document.getElementById('energia_oscila').checked;
+        let tamanho = document.getElementById('tamanho_local').value;
+        let sinal_4g = document.getElementById('sinal_ruim_4g').checked;
+        let live = document.getElementById('tem_live').checked;
+        let energia = document.getElementById('energia_oscila').checked;
 
-        let equipamentos = [];
-        let configuracoes = [];
-        let alertas = [];
-        let is_grande_porte = (tamanho === "grande" || total >= 200 || tamanho === "salas_isoladas");
+        let eq = []; let alertas = []; let dicas = [];
+        let grande_porte = (total >= 200 || tamanho === "grande");
 
-        if (total === 0) {
-            alert("Por favor, preencha a quantidade de dispositivos.");
-            return;
-        }
-
-        // LÓGICA DE ROTEAMENTO (Gerência)
-        if (total <= 15 && tamanho !== "salas_isoladas") {
-            equipamentos.push("01 ONU Wi-Fi AX (Zyxel ou ZTE) - Faz a discagem e o Wi-Fi.");
-        } 
-        else if (total <= 30 && tamanho !== "salas_isoladas") {
-            equipamentos.push("01 ONU Wi-Fi.");
-            equipamentos.push("01 Roteador adicional (Se for um espaço particionado).");
-        } 
-        else if (total <= 80 && tamanho !== "salas_isoladas") {
-            equipamentos.push("01 ONU Wi-Fi (Desativar o Wi-Fi, usar apenas para gerência de rede).");
-        } 
-        else {
-            equipamentos.push("01 ONU configurada em Bridge (Apenas recebendo o link).");
-            equipamentos.push("01 Mikrotik / RouterBoard (Recomendado: RB 750Gr3 ou RB 760iGS para gerência de IPs e tráfego).");
-        }
-
-        // LÓGICA DE ACCESS POINTS (Wi-Fi)
-        if (total > 15 || tamanho === "salas_isoladas") {
-            let ap_text = "";
-            
-            if (tamanho === "salas_isoladas") {
-                ap_text = `**Múltiplos Access Points EAP 610/650 Indoor.** (A quantidade dependerá do número de salas. O sinal não atravessa bem paredes maciças).`;
-                alertas.unshift("🛑 SALAS ISOLADAS: O projeto exige cabeamento até cada sala. Não use repetidores sem fio!");
+        // --- LÓGICA DE HARDWARE ATÉ 30 DISPOSITIVOS ---
+        if (total <= 30) {
+            if (tamanho === "medio") {
+                eq.push("01 ONU Wi-Fi AX (Zyxel/ZTE) + 01 Roteador adicional (Devido ao local ser grande ou reparticionado)");
+            } else {
+                eq.push("01 ONU Wi-Fi AX (Zyxel/ZTE) ou 01 Roteador de boa performance");
             }
-            else if (is_grande_porte) {
-                let qtd_necessaria = area_aberta ? Math.ceil(total / 120) : Math.ceil(total / 100);
-                let qtd_final = Math.max(3, qtd_necessaria); 
-                
-                let modelo_ap = area_aberta ? "EAP 610 Outdoor (Suporta até 120 disp/cada)" : "EAP 620 ou superior Indoor";
-                ap_text = `**${qtd_final}x Access Points ${modelo_ap}.**`;
-                
-                alertas.unshift("🛑 MAPA DE CALOR OBRIGATÓRIO: Eventos de grande porte DEVEM passar pelo Analista de Redes para o desenho do projeto!");
+        } 
+        // --- LÓGICA ACIMA DE 30 DISPOSITIVOS (ENTRADA DE EAPs) ---
+        else {
+            // Roteamento/Gerência
+            if (total < 100) {
+                eq.push("01 ONU Bridge + 01 Roteador para Gerência");
+            } else {
+                eq.push("01 ONU Bridge + 01 Mikrotik (RB 750Gr3 ou 760iGS)");
+            }
+
+            // Wi-Fi (EAPs)
+            if (grande_porte) {
+                let cap = area_aberta ? 120 : 100;
+                let qtd = Math.max(3, Math.ceil(total / cap));
+                let modelo = area_aberta ? "EAP 610 Outdoor" : "EAP 620 ou superior Indoor";
+                eq.push(`${qtd}x Access Points ${modelo}`);
+                alertas.push("🛑 PROJETO DE GRANDE PORTE: Requer análise de Mapa de Calor pelo Analista!");
             } else {
                 if (area_aberta) {
                     let qtd = Math.max(1, Math.ceil(total / 120));
-                    ap_text = `0${qtd}x Access Point EAP 610 Outdoor (Suporta até 120 disp/cada).`;
+                    eq.push(`${qtd}x EAP 610 Outdoor`);
                 } else {
-                    if (total <= 80) {
-                        ap_text = "01x Access Point EAP 610 ou 650 Indoor.";
-                    } else if (total <= 120) {
-                        ap_text = "01x Access Point EAP 620 Indoor.";
-                    } else {
-                        ap_text = "02x Access Points EAP 620 Indoor.";
-                    }
+                    if (total <= 80) eq.push("01x EAP 610 ou 650 Indoor");
+                    else if (total <= 120) eq.push("01x EAP 620 Indoor");
+                    else eq.push("02x EAP 620 Indoor");
                 }
             }
-            equipamentos.push(ap_text);
         }
 
-        // LÓGICA DE REDUNDÂNCIA E ENERGIA
-        if (total > 80 || energia_oscila || tem_live) {
-            equipamentos.push("01 Nobreak (Obrigatório para manter a gerência online em caso de oscilação).");
-        }
+        // --- EXTRAS: ENERGIA E BACKUP ---
+        if (total > 30 || energia || live) eq.push("01 Nobreak (Obrigatório para segurança do evento)");
+        if (sinal_4g && total > 50) eq.push("01 Link Backup (Starlink / 2ª Fibra)");
 
-        if (sinal_ruim_4g && total > 50) {
-            equipamentos.push("01 Link de Backup (Ex: Starlink ou 2ª Operadora) configurado com Failover na Mikrotik.");
-        }
+        // --- DICAS TÉCNICAS ---
+        if (live) dicas.push("Cabo de rede obrigatório para a transmissão.");
+        if (maq > 0) dicas.push("Rede 2.4GHz separada SEM Hotspot para as maquininhas.");
+        if (sinal_4g) alertas.push("Sinal 4G ruim: O Wi-Fi será muito exigido. Configure controle de banda.");
 
-        // CONFIGURAÇÕES E ALERTAS EXTRAS
-        if (tem_live) {
-            configuracoes.push("LIVE: Passar cabo de rede físico do roteador direto para o PC da transmissão.");
-        }
-        
-        if (maquininhas > 0) {
-            configuracoes.push("MAQUININHAS: Criar rede 2.4GHz separada exclusiva para as maquininhas.");
-            if (tem_hotspot) {
-                alertas.push("O Hotspot DEVE ser ativado apenas na rede do público. A rede das maquininhas NUNCA deve ter tela de login!");
-            }
-        }
-
-        if (barracas_metal) {
-            alertas.push("BLINDAGEM DE SINAL: Barracas de metal matam o Wi-Fi das maquininhas. Instrua o cliente a colocar a máquina na janela.");
-        }
-
-        if (risco_layout) {
-            alertas.push("MUDANÇA DE LAYOUT: Leve cabos extras. Se moverem as barracas de local, você precisará instalar APs extras.");
-        }
-
-        if (sinal_ruim_4g) {
-            alertas.push("VAZAMENTO DE SENHA: Sem 4G, o Wi-Fi será alvo de todos. Configure limite de banda por usuário na Mikrotik.");
-        }
-
-        // MONTANDO O RESULTADO NA TELA
-        let html = ``;
-        if(is_grande_porte) {
-            html += `<div class="critico">PROJETO COMPLEXO / GRANDE PORTE</div>`;
-        }
-        
-        html += `<h3>📦 Hardware Recomendado (${total} disp.)</h3><ul>`;
-        equipamentos.forEach(eq => html += `<li>${eq}</li>`);
-        html += `</ul>`;
-
-        if (configuracoes.length > 0) {
-            html += `<h3>⚙️ Configurações Lógicas</h3><ul>`;
-            configuracoes.forEach(cfg => html += `<li class="dica">${cfg}</li>`);
-            html += `</ul>`;
-        }
-
-        if (alertas.length > 0) {
-            html += `<h3>🚨 Alertas de Campo</h3><ul>`;
-            alertas.forEach(al => html += `<li class="alerta">${al}</li>`);
-            html += `</ul>`;
-        }
-
-        let divRes = document.getElementById('resultado');
-        divRes.innerHTML = html;
-        divRes.style.display = 'block';
+        let resDiv = document.getElementById('resultado');
+        resDiv.innerHTML = (grande_porte ? '<div class="critico">ALTA COMPLEXIDADE / GRANDE PORTE</div>' : '') +
+            '<h3>Hardware Recomendado:</h3><ul>' + eq.map(i => `<li>${i}</li>`).join('') + '</ul>' +
+            (alertas.length ? '<h3>Alertas:</h3><ul>' + alertas.map(i => `<li class="alerta">${i}</li>`).join('') + '</ul>' : '') +
+            (dicas.length ? '<h3>Dicas:</h3><ul>' + dicas.map(i => `<li class="dica">${i}</li>`).join('') + '</ul>' : '');
+        resDiv.style.display = 'block';
     }
 </script>
-
 </body>
 </html>
