@@ -364,7 +364,10 @@
         if (!fixacao && eaps_qtd > 0) alertas.push("ABSORÇÃO DE SINAL: Sem fixação alta, utilize pedestais/tripés para os APs (Mínimo 2.5m).");
         if (live) alertas.push("LIVE DETECTADA: É proibido rodar a Live via Wi-Fi. Puxe um cabo de rede direto para a máquina de transmissão.");
         if (sinal_rede_movel && eaps_qtd > 0) dicas.push("A rede móvel ruim sobrecarregará o Wi-Fi. Crie regras no Queue limitando a banda (Ex: 5 Mega/usuário).");
-        if (hotspot && maq > 0) dicas.push("Crie uma rede (SSID) 2.4GHz separada, oculta e SEM hotspot, dedicada exclusivamente para as maquininhas de cartão.");
+        
+        // CORREÇÃO: MAQUININHAS
+        if (hotspot && maq > 0) dicas.push("Crie uma rede (SSID) separada e SEM hotspot, dedicada exclusivamente para as maquininhas de cartão.");
+        
         if (tipo === "Feira de Negócios") dicas.push("Poluição de RF alta. Fixe os canais dos EAPs apenas em 5GHz e evite canalização automática.");
         if (gamer && qtd_pcs > 0) dicas.push("Crie uma VLAN exclusiva para a porta do Switch Gamer, separando totalmente o tráfego dos PCs do Wi-Fi do público (QoS ativo).");
 
@@ -377,10 +380,10 @@
             <h2 style="color: var(--vermelho-virtex); font-size: 20px; text-transform: uppercase; margin-top: 0; border-bottom: 2px solid var(--vermelho-virtex); padding-bottom: 10px;">📋 Laudo Técnico de Vistoria</h2>
             
             <div class="secao-res" style="background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 6px;">
-                <p style="margin: 0 0 8px 0;"><b>Cliente / Evento:</b> ${evt} &nbsp;&nbsp;|&nbsp;&nbsp; <b>Cidade:</b> ${cidade}</p>
+                <p style="margin: 0 0 8px 0;"><b>Cliente / Evento:</b> ${evt}   |   <b>Cidade:</b> ${cidade}</p>
                 <p style="margin: 0 0 8px 0;"><b>Localização GPS:</b> ${htmlLocal}</p>
                 <p style="margin: 0 0 8px 0;"><b>Técnico Responsável:</b> ${tec}</p>
-                <p style="margin: 0 0 8px 0;"><b>Data da Vistoria:</b> ${dVist} &nbsp;&nbsp;|&nbsp;&nbsp; <b>Data do Evento:</b> ${dEvt}</p>
+                <p style="margin: 0 0 8px 0;"><b>Data da Vistoria:</b> ${dVist}   |   <b>Data do Evento:</b> ${dEvt}</p>
                 <hr style="border: 0; border-top: 1px dashed #ccc; margin: 12px 0;">
                 <p style="margin: 0 0 8px 0;"><b>Tipo de Evento:</b> ${tipo}</p>
                 <p style="margin: 0 0 8px 0;"><b>Conexões Estimadas:</b> ${total} dispositivos (Público + Staff + POS)</p>
